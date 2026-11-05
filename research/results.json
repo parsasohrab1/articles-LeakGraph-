@@ -1,0 +1,95 @@
+{
+  "note": "synthetic scenarios on a linearised 8x8 grid network",
+  "runs": {
+    "sensors_4": {
+      "same_conditions": {
+        "top1": 0.37,
+        "top3": 0.649,
+        "mean_hop_error": 1.413,
+        "baseline_top1": 0.052,
+        "baseline_mean_hop_error": 3.637,
+        "conformal_coverage": 0.885,
+        "mean_set_size": 5.749
+      },
+      "demand_noise_x3": {
+        "top1": 0.203,
+        "top3": 0.382,
+        "mean_hop_error": 2.509,
+        "baseline_top1": 0.068,
+        "baseline_mean_hop_error": 3.879,
+        "conformal_coverage": 0.475,
+        "mean_set_size": 4.828
+      },
+      "recalibrated_on_100_shifted": {
+        "top1": 0.203,
+        "top3": 0.382,
+        "mean_hop_error": 2.509,
+        "baseline_top1": 0.068,
+        "baseline_mean_hop_error": 3.879,
+        "conformal_coverage": 0.917,
+        "mean_set_size": 23.628
+      },
+      "threshold": 0.9589437505425269
+    },
+    "sensors_8": {
+      "same_conditions": {
+        "top1": 0.675,
+        "top3": 0.888,
+        "mean_hop_error": 0.565,
+        "baseline_top1": 0.113,
+        "baseline_mean_hop_error": 2.639,
+        "conformal_coverage": 0.921,
+        "mean_set_size": 2.426
+      },
+      "demand_noise_x3": {
+        "top1": 0.362,
+        "top3": 0.613,
+        "mean_hop_error": 1.681,
+        "baseline_top1": 0.133,
+        "baseline_mean_hop_error": 3.093,
+        "conformal_coverage": 0.517,
+        "mean_set_size": 2.157
+      },
+      "recalibrated_on_100_shifted": {
+        "top1": 0.362,
+        "top3": 0.613,
+        "mean_hop_error": 1.681,
+        "baseline_top1": 0.133,
+        "baseline_mean_hop_error": 3.093,
+        "conformal_coverage": 0.898,
+        "mean_set_size": 12.369
+      },
+      "threshold": 0.9258872206556633
+    },
+    "sensors_12": {
+      "same_conditions": {
+        "top1": 0.828,
+        "top3": 0.941,
+        "mean_hop_error": 0.324,
+        "baseline_top1": 0.173,
+        "baseline_mean_hop_error": 2.372,
+        "conformal_coverage": 0.913,
+        "mean_set_size": 1.4
+      },
+      "demand_noise_x3": {
+        "top1": 0.493,
+        "top3": 0.726,
+        "mean_hop_error": 1.435,
+        "baseline_top1": 0.183,
+        "baseline_mean_hop_error": 2.931,
+        "conformal_coverage": 0.576,
+        "mean_set_size": 1.463
+      },
+      "recalibrated_on_100_shifted": {
+        "top1": 0.493,
+        "top3": 0.726,
+        "mean_hop_error": 1.435,
+        "baseline_top1": 0.183,
+        "baseline_mean_hop_error": 2.931,
+        "conformal_coverage": 0.912,
+        "mean_set_size": 9.742
+      },
+      "threshold": 0.8658067385986871
+    }
+  }
+}
