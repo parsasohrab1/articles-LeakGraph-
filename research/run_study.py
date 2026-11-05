@@ -14,11 +14,15 @@ import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from leakgraph.localize import (  # noqa: E402
-    Model, calibrate_threshold, candidate_set, nearest_sensor_baseline, posterior,
+from leakgraph.localize import (
+    Model,
+    calibrate_threshold,
+    candidate_set,
+    nearest_sensor_baseline,
+    posterior,
 )
-from leakgraph.network import choose_sensors, grid_network  # noqa: E402
-from leakgraph.simulate import make_scenarios  # noqa: E402
+from leakgraph.network import choose_sensors, grid_network
+from leakgraph.simulate import make_scenarios
 
 
 def evaluate(model, res, nodes, thr):

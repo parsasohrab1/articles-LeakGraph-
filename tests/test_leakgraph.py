@@ -2,7 +2,12 @@ import numpy as np
 import pytest
 
 from leakgraph.localize import (
-    Model, calibrate_threshold, candidate_set, estimate_flow, posterior, repair_priority,
+    Model,
+    calibrate_threshold,
+    candidate_set,
+    estimate_flow,
+    posterior,
+    repair_priority,
 )
 from leakgraph.network import choose_sensors, grid_network
 from leakgraph.simulate import make_scenarios
