@@ -1,19 +1,28 @@
-"""Leak-localisation study on synthetic scenarios (linearised network; not field data).
+"""Synthetic localisation study plus the BattLeDIM simulated-benchmark detection study.
 
-Usage: python research/run_study.py --out research/results.json
+BattLeDIM L-Town is an EPANET hydraulic simulation, not field data.
+The benchmark block is computed from data/hourly_scores.csv and data/leaks.csv.
+
+Usage:
+    python research/fetch_battledim.py
+    python research/run_study.py --out research/results.json
+    python research/run_study.py --check
 """
 
 from __future__ import annotations
 
 import argparse
 import json
+import math
 import sys
 from pathlib import Path
 
 import numpy as np
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "src"))
 
+from leakgraph.battledim import evaluate_detection, load_hourly, load_leaks
 from leakgraph.localize import (
     Model,
     calibrate_threshold,
@@ -42,10 +51,7 @@ def evaluate(model, res, nodes, thr):
             "mean_set_size": float(np.mean([len(s) for s in sets]))}, post
 
 
-def main() -> None:
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--out", default="research/results.json")
-    a = ap.parse_args()
+def synthetic() -> dict:
     out: dict = {"note": "synthetic scenarios on a linearised 8x8 grid network", "runs": {}}
     net = grid_network(8, seed=0)
     for k in (4, 8, 12):
@@ -64,8 +70,60 @@ def main() -> None:
         recal, _ = evaluate(model, sh_r, sh_n, thr2)
         out["runs"][f"sensors_{k}"] = {"same_conditions": same, "demand_noise_x3": shifted,
                                        "recalibrated_on_100_shifted": recal, "threshold": thr}
-    Path(a.out).write_text(json.dumps(out, indent=2))
-    print(json.dumps(out, indent=1))
+    return out
+
+
+def battledim() -> dict:
+    data = ROOT / "data"
+    manifest = json.loads((data / "manifest.json").read_text(encoding="utf-8"))
+    hours, scores, onset = load_hourly(data / "hourly_scores.csv")
+    leaks = load_leaks(data / "leaks.csv")
+    if len(leaks) != manifest["n_leaks"] or int(hours.shape[0]) != manifest["n_hours"]:
+        raise SystemExit("snapshot does not match data/manifest.json; rerun fetch_battledim.py")
+    result = evaluate_detection(hours, scores, onset, leaks)
+    result["n_pressure_sensors"] = manifest["n_pressure_sensors"]
+    return result
+
+
+def build() -> dict:
+    return {"synthetic": synthetic(), "battledim": battledim()}
+
+
+def _same(left, right) -> bool:
+    if isinstance(left, dict) and isinstance(right, dict):
+        return left.keys() == right.keys() and all(_same(left[k], right[k]) for k in left)
+    if isinstance(left, list) and isinstance(right, list):
+        return len(left) == len(right) and all(_same(a, b) for a, b in zip(left, right, strict=True))
+    if isinstance(left, float) and isinstance(right, float):
+        if math.isnan(left) and math.isnan(right):
+            return True
+        return math.isclose(left, right, rel_tol=1e-6, abs_tol=1e-6)
+    return left == right
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--out", default=str(ROOT / "research" / "results.json"))
+    parser.add_argument("--check", action="store_true")
+    args = parser.parse_args()
+    fresh = build()
+    path = Path(args.out)
+    if args.check:
+        saved = json.loads(path.read_text(encoding="utf-8"))
+        if not _same(saved, fresh):
+            raise SystemExit("results.json does not match a fresh run")
+        print("results.json matches a fresh run")
+        return
+    path.write_text(json.dumps(fresh, indent=2) + "\n", encoding="utf-8")
+    bench = fresh["battledim"]
+    simple = bench["hour_level_2019"]["simple_threshold"]
+    conformal = bench["hour_level_2019"]["conformal"]
+    print(
+        f"leaks {bench['n_leaks']} "
+        f"simple_recall {simple['recall']} simple_precision {simple['precision']} "
+        f"conformal_recall {conformal['recall']} conformal_precision {conformal['precision']} "
+        f"conformal_threshold {bench['conformal_threshold']}"
+    )
 
 
 if __name__ == "__main__":

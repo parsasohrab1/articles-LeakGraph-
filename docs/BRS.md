@@ -17,7 +17,7 @@ Non-revenue water (leakage) in urban distribution networks. Crews need to know w
 Water utility network engineers and leak-detection crews.
 
 ## Scope
-In: localisation from head drops on a network model. Out: hydraulic simulation with a full solver (EPANET), field integration, pipe-condition modelling.
+In: localisation from head drops on a linearised network model, and detection on a published hydraulic simulation. Out: field integration, pipe-condition modelling.
 
-## Success measures (on field data)
-Top-1 and top-3 localisation accuracy, mean distance (hops or metres) to the true leak, coverage of the candidate set, digs saved.
+## Success measures (simulated benchmark, not field data)
+On BattLeDIM L-Town, which is an EPANET simulation: hour-level precision, recall, and false-alarm rate of a predeclared residual threshold against a split-conformal threshold. Top-1 localisation remains a synthetic-grid measure only.

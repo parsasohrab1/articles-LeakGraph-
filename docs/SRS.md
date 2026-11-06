@@ -9,5 +9,6 @@
 | FR-5 | Split-conformal candidate set at a target coverage | `localize.py` | `test_conformal_coverage_on_exchangeable_data` |
 | FR-6 | Repair priority = posterior x flow | `localize.py` | `test_repair_priority_orders_by_product` |
 | NFR-1 | Seeded, reproducible scenarios | `simulate.py` | `test_scenarios_are_seeded` |
+| FR-7 | Load BattLeDIM labels and compare a predeclared residual threshold with a split-conformal quantile on the simulated benchmark | `battledim.py` | `test_battledim.py` |
 
 **Model assumption:** the DC (resistive) linearisation of the network equations around one operating point; leaks and demand noise add linearly. Real networks are nonlinear and vary with demand level.
