@@ -1,7 +1,7 @@
 [project]
 name = "leakgraph"
 version = "0.1.0"
-description = "Leak localisation in water distribution networks with calibrated uncertainty (simulation-validated, TRL 4)"
+description = "Leak detection on the BattLeDIM simulated hydraulic benchmark, plus a synthetic localisation study (TRL 4)"
 requires-python = ">=3.10"
 dependencies = ["numpy>=1.24"]
 
