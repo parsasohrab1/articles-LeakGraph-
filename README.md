@@ -22,6 +22,8 @@ precision is in [research/results.json](research/results.json).
 
 BattLeDIM is Vrachimis et al., Zenodo, [doi:10.5281/zenodo.4017659](https://doi.org/10.5281/zenodo.4017659), CC-BY-4.0.
 
+The basket card for article registration and achievements is [docs/REGISTRATION.md](docs/REGISTRATION.md) (product id `nrwleak`). It is regenerated from `research/results.json`. The article status on that card is unsubmitted.
+
 ```bash
 pip install -e ".[dev]"
 python research/fetch_battledim.py

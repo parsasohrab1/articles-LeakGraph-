@@ -12,6 +12,7 @@ Non-revenue water (leakage) in urban distribution networks. Crews need to know w
 | BO-2 | Give a candidate set with a stated coverage rather than a single guess |
 | BO-3 | Rank repairs by probability times estimated leaked flow |
 | BO-4 | State when the coverage guarantee fails (demand noise larger than assumed) |
+| BO-5 | Keep the article and achievement card (`docs/REGISTRATION.md`) equal to `research/results.json`, with the article unsubmitted |
 
 ## Users
 Water utility network engineers and leak-detection crews.
