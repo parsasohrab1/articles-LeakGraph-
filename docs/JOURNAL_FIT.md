@@ -24,4 +24,4 @@ The call names leak detection, so the topic overlaps this repository. The eviden
 
 Do not submit. No file has been uploaded.
 
-The printed deadline is 30 September 2026, and this check is dated 7 November 2026. Submission stays closed for a second, independent reason: a patent attorney has not confirmed that the text to be sent discloses no claimed method. The note in [../article/abstract.md](../article/abstract.md) is not a submission. The internal filing card is [REGISTRATION.md](REGISTRATION.md). Both use the simulated benchmark and do not describe a localisation algorithm.
+The printed deadline is 30 September 2026, and this check is dated 7 November 2026. The note in [../article/abstract.md](../article/abstract.md) is not a submission. The internal filing card is [REGISTRATION.md](REGISTRATION.md). Both use the simulated benchmark and do not describe a localisation algorithm.

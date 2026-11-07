@@ -4,8 +4,7 @@ Leak detection on a water-network benchmark, with a synthetic localisation study
 The Water (MDPI) special issue on smart water management is recorded in
 [docs/JOURNAL_FIT.md](docs/JOURNAL_FIT.md). No article is submitted from this branch.
 The BattLeDIM comparison uses a pressure-residual score, a predeclared threshold, and a
-split-conformal quantile. It does not describe a localisation algorithm, and a patent
-attorney has not reviewed the text.
+split-conformal quantile. It does not describe a localisation algorithm.
 
 **Maturity: TRL 4** ([docs/TRL.md](docs/TRL.md)). BattLeDIM L-Town is an EPANET hydraulic
 simulation and is reported here as a **simulated benchmark**, not as field data. On the

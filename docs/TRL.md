@@ -48,4 +48,4 @@ With demand noise three times larger than the model assumes, coverage fell to 0.
 - A field result. BattLeDIM is a simulated benchmark.
 - Localisation of L-Town pipes, or an EPANET inverse model.
 - A false-alarm guarantee on 2019. The conformal rule's evaluation false-alarm rate is 0.258 against a 0.10 target.
-- Methods that are the subject of a patent filing. The benchmark comparison is the residual score, the predeclared threshold, and the split-conformal quantile. A patent attorney has not reviewed this text, and no article is submitted.
+- Methods that are the subject of a patent filing. The benchmark comparison is the residual score, the predeclared threshold, and the split-conformal quantile. No article is submitted.

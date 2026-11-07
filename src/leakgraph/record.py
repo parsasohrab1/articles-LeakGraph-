@@ -2,7 +2,7 @@
 
 The measured rows are formatted from the BattLeDIM block of results.json.
 The article row stays unsubmitted: the checked Water special issue is past
-its printed deadline, and a patent attorney has not reviewed a manuscript.
+its printed deadline.
 """
 
 from __future__ import annotations
